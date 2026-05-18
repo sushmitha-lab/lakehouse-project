@@ -1,0 +1,6 @@
+lakehouse:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../lakehouse.duckdb

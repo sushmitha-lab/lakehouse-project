@@ -1,0 +1,56 @@
+name: dbt CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  dbt-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install dbt-core dbt-duckdb duckdb pandas pyarrow
+
+      - name: Create sample data
+        run: |
+          python3 -c "
+          import pandas as pd
+          import os
+          os.makedirs('extract', exist_ok=True)
+          pd.DataFrame([{'city':'New York','temperature_f':75,'humidity':50,'weather':'Clear','wind_speed':10,'extracted_at':'2024-01-01'}]).to_parquet('extract/weather_test.parquet')
+          pd.DataFrame([{'ticker':'AAPL','price':180,'change':1.5,'change_percent':0.84,'volume':50000000,'extracted_at':'2024-01-01'}]).to_parquet('extract/stocks_test.parquet')
+          pd.DataFrame([{'topic':'Apple stock','title':'Apple hits record','source':'Reuters','published_at':'2024-01-01','extracted_at':'2024-01-01'}]).to_parquet('extract/news_test.parquet')
+          "
+
+      - name: Load raw data into DuckDB
+        run: |
+          python3 -c "
+          import duckdb
+          con = duckdb.connect('lakehouse.duckdb')
+          con.execute('CREATE SCHEMA IF NOT EXISTS raw')
+          con.execute('CREATE OR REPLACE TABLE raw.weather AS SELECT * FROM read_parquet(\"extract/weather_test.parquet\")')
+          con.execute('CREATE OR REPLACE TABLE raw.stocks AS SELECT * FROM read_parquet(\"extract/stocks_test.parquet\")')
+          con.execute('CREATE OR REPLACE TABLE raw.news AS SELECT * FROM read_parquet(\"extract/news_test.parquet\")')
+          print('Raw tables loaded!')
+          "
+
+      - name: Run dbt
+        run: |
+          cd lakehouse
+          dbt run --profiles-dir .
+
+      - name: Run dbt tests
+        run: |
+          cd lakehouse
+          dbt test --profiles-dir .
