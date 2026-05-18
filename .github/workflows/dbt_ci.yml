@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
@@ -29,7 +29,7 @@ jobs:
           import os
           os.makedirs('extract', exist_ok=True)
           pd.DataFrame([{'city':'New York','temperature_f':75,'humidity':50,'weather':'Clear','wind_speed':10,'extracted_at':'2024-01-01'}]).to_parquet('extract/weather_test.parquet')
-          pd.DataFrame([{'ticker':'AAPL','price':180,'change':1.5,'change_percent':0.84,'volume':50000000,'extracted_at':'2024-01-01'}]).to_parquet('extract/stocks_test.parquet')
+          pd.DataFrame([{'ticker':'AAPL','price':'180.00','change':'1.50','change_percent':'0.8400%','volume':'50000000','extracted_at':'2024-01-01'}]).to_parquet('extract/stocks_test.parquet')
           pd.DataFrame([{'topic':'Apple stock','title':'Apple hits record','source':'Reuters','published_at':'2024-01-01','extracted_at':'2024-01-01'}]).to_parquet('extract/news_test.parquet')
           "
 
