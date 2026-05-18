@@ -1,4 +1,4 @@
-# Market & Weather Intelligence — ELT Lakehouse
+# Market & Weather Intelligence : ELT Lakehouse
 
 A production-style ELT data pipeline built with modern data engineering tools.
 
