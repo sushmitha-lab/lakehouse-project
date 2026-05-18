@@ -1,0 +1,31 @@
+[0m22:20:12.582216 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fda8890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113453e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113453b90>]}
+
+
+============================== 22:20:12.590511 | 8ce00cee-dfd7-4536-8b0a-62bd05d341df ==============================
+[0m22:20:12.590511 [info ] [MainThread]: Running with dbt=1.11.10
+[0m22:20:12.591576 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'printer_width': '80', 'cache_selected_only': 'False', 'use_colors': 'True', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'static_parser': 'True', 'version_check': 'True', 'introspect': 'True', 'invocation_command': 'dbt init lakehouse', 'target_path': 'None', 'profiles_dir': '/Users/sushmithakatherinej/.dbt', 'debug': 'False', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'log_path': 'logs', 'partial_parse': 'True', 'write_json': 'True', 'indirect_selection': 'eager', 'fail_fast': 'False', 'empty': 'None'}
+[0m22:20:12.610902 [info ] [MainThread]: Creating dbt configuration folder at /Users/sushmithakatherinej/.dbt
+[0m22:20:12.612315 [debug] [MainThread]: Starter project path: /Users/sushmithakatherinej/lakehouse-project/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m22:20:12.620113 [info ] [MainThread]: 
+Your new dbt project "lakehouse" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m22:20:12.620436 [info ] [MainThread]: Setting up your profile.
+[0m22:20:26.962064 [info ] [MainThread]: Profile lakehouse written to /Users/sushmithakatherinej/.dbt/profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m22:20:26.981028 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 14.539111, "process_in_blocks": "0", "process_kernel_time": 0.769773, "process_mem_max_rss": "105177088", "process_out_blocks": "0", "process_user_time": 1.503178}
+[0m22:20:26.981681 [debug] [MainThread]: Command `dbt init` succeeded at 22:20:26.981425 after 14.54 seconds
+[0m22:20:26.982115 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11356dcd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112c52930>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113453c80>]}
+[0m22:20:26.982832 [debug] [MainThread]: Flushing usage events
+[0m22:20:27.503955 [debug] [MainThread]: An error was encountered while trying to flush usage events

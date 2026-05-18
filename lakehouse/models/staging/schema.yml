@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_stocks
+    columns:
+      - name: ticker
+        tests:
+          - not_null
+          - unique
+      - name: price
+        tests:
+          - not_null
+
+  - name: stg_weather
+    columns:
+      - name: city
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_news
+    columns:
+      - name: title
+        tests:
+          - not_null
