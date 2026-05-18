@@ -2,3 +2,4 @@
 venv/
 lakehouse.duckdb
 logs/
+.streamlit/secrets.toml
